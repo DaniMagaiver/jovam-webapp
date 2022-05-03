@@ -6,6 +6,8 @@ COPY package.json package-lock.json ./
 RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
 WORKDIR /ng-app
 COPY . .
+##Verificar versão do node
+RUN node --version
 ## Build the angular app in production mode and store the artifacts in dist folder
 RUN npm run-script build-prod
 ### STAGE 2: Setup ###
