@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start-local": "ng serve --port 4200 --host 0.0.0.0 --proxy-config proxy.conf.json --disable-host-check -c local",
-    "start-prod": "ng serve --host 0.0.0.0 -c prod",
+    "start-prod": "ng serve --host 0.0.0.0 -c production",
     "build": "ng build",
     "build-prod": "ng build",
     "watch": "ng build --watch --configuration development",
