@@ -1,0 +1,26 @@
+.layout{
+    height: 100%;
+    overflow: hidden;
+
+    header{
+        display: block;
+        height: 10vh;
+        width: 100%;
+    }
+
+    .grid-list{
+        height: 90vh;
+        aside{
+            height: 100%;
+            width: 100%;
+        }
+    
+        main{
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            padding: 2rem;
+        }
+    }
+}
