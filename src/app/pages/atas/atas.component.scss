@@ -1,0 +1,12 @@
+.ata{
+    .ata-form{
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        button{
+            width: 150px;
+            align-self: flex-end;
+        }
+    }
+}

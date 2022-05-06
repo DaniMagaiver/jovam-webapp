@@ -3,20 +3,36 @@
     <img src="http://placekitten.com/72/57" alt="logo" />
   </div>
   <h1>Faça o Login</h1>
-  <mat-radio-group class="user-type">
-    <mat-radio-button value="conselho">CONSELHO</mat-radio-button>
-    <mat-radio-button value="secretaria">SECRETARIA</mat-radio-button>
-    <mat-radio-button value="escola">ESCOLA</mat-radio-button>
-  </mat-radio-group>
-  <div class="login-form">
-    <mat-form-field>
-      <mat-label>ID</mat-label>
-      <input id="txtId" type="text" matInput />
-    </mat-form-field>
-    <mat-form-field class="pb-0">
-      <mat-label>Senha</mat-label>
-      <input id="txtPassword" type="password" matInput />
-    </mat-form-field>
-  </div>
-  <button (click)="login()" id="btnEntrar" color="primary" mat-raised-button>ENTRAR</button>
+  <form [formGroup]="loginForm">
+    <mat-radio-group color="primary" formControlName="userType" class="user-type">
+      <mat-radio-button value="conselho">CONSELHO</mat-radio-button>
+      <mat-radio-button value="escola">ESCOLA</mat-radio-button>
+    </mat-radio-group>
+    <div class="login-form">
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input id="txtId" type="text" formControlName="id" matInput />
+        <mat-error>Insira o id</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Senha</mat-label>
+        <input
+          id="txtPassword"
+          type="password"
+          formControlName="password"
+          matInput
+        />
+        <mat-error>Insira a senha</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+  <button
+    [disabled]="loginForm.invalid"
+    (click)="login()"
+    id="btnEntrar"
+    color="primary"
+    mat-raised-button
+  >
+    ENTRAR
+  </button>
 </div>

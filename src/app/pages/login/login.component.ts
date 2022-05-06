@@ -1,14 +1,29 @@
-import { Component } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent{
-    constructor(private router:Router, private activedRoute:ActivatedRoute){}
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
 
-    login(){
-        this.router.navigate(['./home'],{relativeTo: this.activedRoute});
-    }
+  constructor(
+    private router: Router,
+    private activedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      id: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      userType: [null, [Validators.required]]
+    });
+  }
+
+  login() {
+    this.router.navigate(['./home'], { relativeTo: this.activedRoute });
+  }
 }

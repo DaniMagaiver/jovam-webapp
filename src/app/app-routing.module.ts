@@ -1,3 +1,4 @@
+import { LayoutComponent } from './layout/layout.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -9,9 +10,14 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule),
-  },
+    component: LayoutComponent,
+    children:[
+      {
+        path: 'atas',
+        loadChildren: () => import('./pages/atas/atas.module').then((m) => m.AtasModule),
+      }
+    ]
+  }
 ];
 
 @NgModule({

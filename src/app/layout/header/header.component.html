@@ -4,7 +4,7 @@
     </div>
     <menu>
         <ul>
-            <li *ngFor="let menu of menuData">
+            <li (click)="go(menu)" *ngFor="let menu of menuData">
                 {{menu.title}}
             </li>
         </ul>

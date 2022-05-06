@@ -1,3 +1,4 @@
+import { PagesModule } from './pages/pages.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +16,7 @@ import { LayoutModule } from './layout/layout.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    PagesModule,
     LayoutModule
   ],
   providers: [],
