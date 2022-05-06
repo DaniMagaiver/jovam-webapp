@@ -1,0 +1,9 @@
+<h1>Secretaria de SP</h1>
+<h2>Sede: Av Paulista 900</h2>
+<p>São as escolas que recebem o auxílio desta secretaria:</p>
+<mat-list>
+  <mat-list-item *ngFor="let school of schools">{{
+    school.name
+  }}</mat-list-item>
+</mat-list>
+<mat-divider> </mat-divider>

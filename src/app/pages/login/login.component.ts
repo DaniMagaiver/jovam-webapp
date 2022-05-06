@@ -1,3 +1,4 @@
+import { StorageService } from './../../shared/services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private activedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private storageService:StorageService
   ) {}
 
   ngOnInit(): void {
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.storageService.saveInServiceStorage('profile', this.loginForm.get('userType')?.value);
     this.router.navigate(['./home'], { relativeTo: this.activedRoute });
   }
 }

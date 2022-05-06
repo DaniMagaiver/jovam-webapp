@@ -15,6 +15,14 @@ const routes: Routes = [
       {
         path: 'atas',
         loadChildren: () => import('./pages/atas/atas.module').then((m) => m.AtasModule),
+      },
+      {
+        path: 'escolas',
+        loadChildren: () => import('./pages/escolas/escolas.module').then(m => m.EscolasModule)
+      },
+      {
+        path: 'turmas',
+        loadChildren: () => import('./pages/turmas/turmas.module').then(m => m.TurmasModule)
       }
     ]
   }

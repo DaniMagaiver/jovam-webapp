@@ -1,0 +1,9 @@
+<h1>Escola 1</h1>
+<h2>Sede: Av Paulista 350</h2>
+<p>São as turmas que recebem o auxílio desta escola:</p>
+<mat-list>
+  <mat-list-item *ngFor="let class of classes">{{
+    class.name
+  }}</mat-list-item>
+</mat-list>
+<mat-divider> </mat-divider>
