@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component } from "@angular/core";
 
 @Component({
@@ -5,5 +6,7 @@ import { Component } from "@angular/core";
     styleUrls: ['./turmas.component.scss']
 })
 export class TurmasComponent{
-    classes = [{ name: 'Turmas 1' }, { name: 'Turmas 2' }, { name: 'Turmas 3' }];
+    constructor(private activatedRoute:ActivatedRoute){}
+
+    turmas = this.activatedRoute.snapshot.data.turmas;
 }

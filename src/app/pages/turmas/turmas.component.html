@@ -1,9 +1,28 @@
-<h1>Escola 1</h1>
-<h2>Sede: Av Paulista 350</h2>
-<p>São as turmas que recebem o auxílio desta escola:</p>
-<mat-list>
-  <mat-list-item *ngFor="let class of classes">{{
-    class.name
-  }}</mat-list-item>
-</mat-list>
-<mat-divider> </mat-divider>
+<mat-grid-list class="container turmas" cols="4" rowHeight="fit">
+  <mat-grid-tile [colspan]="1">
+    <div class="sidebar">
+      <jovam-sidebar> </jovam-sidebar>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="3">
+    <div class="body">
+      <h1>Turmas</h1>
+      <h2>Turmas pertencentes a esta escola:</h2>
+      <ul class="turmas-list">
+        <li class="turma" *ngFor="let turma of turmas">
+          <h3 class="title">{{ turma.nomeCurso }}</h3>
+          <div class="professor">Professor: {{ turma.professor }}</div>
+          <div class="alunos">
+            <span>Alunos:</span>
+            <ul class="lista-alunos">
+              <li *ngFor="let aluno of turma.alunos">
+                {{ aluno }}
+              </li>
+            </ul>
+          </div>
+        </li>
+        <mat-divider> </mat-divider>
+      </ul>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

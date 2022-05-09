@@ -1,0 +1,25 @@
+.turmas {
+  .turmas-list {
+    padding-left: 0;
+    .turma {
+      .title {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+      .professor {
+        font-size: 14px;
+      }
+      .alunos {
+        display: flex;
+        font-size: 14px;
+
+        .lista-alunos {
+          display: flex;
+          flex-direction: column;
+          margin-left: 1rem;
+          padding: 0;
+        }
+      }
+    }
+  }
+}

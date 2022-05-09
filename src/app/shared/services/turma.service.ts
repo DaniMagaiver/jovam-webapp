@@ -18,4 +18,8 @@ export class TurmaService {
   procurarTodosAlunos() {
     return this.httpClient.get(this.baseUrl);
   }
+
+  findBySecretariaId(id: string) {
+    return this.httpClient.get<Turma[]>(`${this.baseUrl}/${id}`);
+  }
 }
