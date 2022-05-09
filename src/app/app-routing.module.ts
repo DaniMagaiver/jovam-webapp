@@ -11,21 +11,31 @@ const routes: Routes = [
   {
     path: 'home',
     component: LayoutComponent,
-    children:[
+    children: [
       {
         path: 'atas',
-        loadChildren: () => import('./pages/atas/atas.module').then((m) => m.AtasModule),
+        loadChildren: () =>
+          import('./pages/atas/atas.module').then((m) => m.AtasModule),
       },
       {
         path: 'escolas',
-        loadChildren: () => import('./pages/escolas/escolas.module').then(m => m.EscolasModule)
+        loadChildren: () =>
+          import('./pages/escolas/escolas.module').then((m) => m.EscolasModule),
       },
       {
         path: 'turmas',
-        loadChildren: () => import('./pages/turmas/turmas.module').then(m => m.TurmasModule)
-      }
-    ]
-  }
+        loadChildren: () =>
+          import('./pages/turmas/turmas.module').then((m) => m.TurmasModule),
+      },
+      {
+        path: 'requisicoes',
+        loadChildren: () =>
+          import('./pages/requisicoes/requisicioes.module').then(
+            (m) => m.RequisicoesModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({

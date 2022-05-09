@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 interface Menu {
   title: string;
   route: string;
-  profile: string;
+  profiles: string[];
 }
 @Component({
   styleUrls: ['./header.component.scss'],
@@ -22,27 +22,32 @@ export class HeaderComponent implements OnInit {
   menuData: Menu[] = [
     {
       title: 'Início',
-      route: '',
-      profile: '',
+      route: './requisicoes',
+      profiles: ['conselho'],
+    },
+    {
+      title: 'Início',
+      route: './requisicoes',
+      profiles: ['secretaria'],
     },
     {
       title: 'Atas',
       route: './atas',
-      profile: '',
+      profiles: ['conselho', 'secretaria'],
     },
     {
-      title: 'Escolas',
+      title: 'Secretarias',
       route: './escolas',
-      profile: 'conselho',
+      profiles: ['conselho'],
     },
     {
       title: 'Turmas',
       route: './turmas',
-      profile: 'escola',
+      profiles: ['secretaria'],
     },
   ];
 
-  activedProfile = this.storageService.getInServiceStorage('profile');
+  activedProfile:string = this.storageService.getInSessionStorage('profile');
 
   ngOnInit(): void {
     if(!this.activedProfile){

@@ -1,16 +1,20 @@
-<mat-grid-list class="container ata" cols="4" rowHeight="fit">
+<mat-grid-list class="container requisicao" cols="4" rowHeight="fit">
   <mat-grid-tile [colspan]="1">
     <div class="sidebar">
       <jovam-sidebar>
         <mat-list>
-          <mat-list-item>item</mat-list-item>
+          <mat-list-item *ngFor="let requisicao of requisicoes">
+            <span>{{requisicao.titulo}}</span>
+            <span>{{requisicao.subtitulo}}</span>
+            <span>{{requisicao.secretaria.nome}}</span>
+          </mat-list-item>
         </mat-list>
       </jovam-sidebar>
     </div>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="3">
     <div class="body">
-      <h1>Ata de Concórdia Secretarial</h1>
+      <h1>Requisicao de Concórdia Secretarial</h1>
       <h2>Sem Assunto</h2>
       <p>
         Pela união de todas as secretarias foi promulgado os seguintes dizeres:
@@ -51,8 +55,8 @@
       </p>
       <mat-divider> </mat-divider>
 
-      <form class="ata-form" [formGroup]="atasFormGroup">
-        <h3>Escrever uma Ata</h3>
+      <form class="requisicao-form" [formGroup]="requisicoesFormGroup">
+        <h3>Escrever uma requisicao</h3>
         <mat-form-field>
           <mat-label>Título</mat-label>
           <input formControlName="title" id="txtTitle" matInput />
@@ -65,12 +69,12 @@
           <mat-error>Campo obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Texto da ATA</mat-label>
+          <mat-label>Texto da requisicao</mat-label>
           <textarea formControlName="text" id="txtText" matInput></textarea>
           <mat-error>Campo obrigatório</mat-error>
         </mat-form-field>
         <button
-          [disabled]="atasFormGroup.invalid"
+          [disabled]="requisicoesFormGroup.invalid"
           id="btnSend"
           color="primary"
           mat-raised-button

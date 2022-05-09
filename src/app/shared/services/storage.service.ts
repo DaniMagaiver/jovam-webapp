@@ -9,7 +9,7 @@ export class StorageService{
     private serviceStorage:{[key:string]:string} = {};
 
     saveInSessionStorage(key:string, value:string){
-        window.sessionStorage.setItem(key,JSON.stringify(value));
+        window.sessionStorage.setItem(key,value);
     }
 
     getInSessionStorage(key:string):any{

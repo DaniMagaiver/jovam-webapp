@@ -1,3 +1,6 @@
+import { Conselho } from './../../shared/models/Conselho.model';
+import { Secretaria } from './../../shared/models/Secretaria.model';
+import { LoginService } from './../../shared/services/login.service';
 import { StorageService } from './../../shared/services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,19 +17,23 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private activedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private storageService:StorageService
+    private storageService:StorageService,
+    private loginService:LoginService
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       id: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      userType: [null, [Validators.required]]
+      profile: [null, [Validators.required]]
     });
   }
 
   login() {
-    this.storageService.saveInServiceStorage('profile', this.loginForm.get('userType')?.value);
-    this.router.navigate(['./home'], { relativeTo: this.activedRoute });
+    this.loginService.login(this.loginForm.value).subscribe((user) => {
+      this.storageService.saveInSessionStorage('profile', this.loginForm.get('profile')?.value);
+      this.storageService.saveInSessionStorage('user', JSON.stringify(user))
+      this.router.navigate(['./home/requisicoes'], { relativeTo: this.activedRoute });
+    });
   }
 }

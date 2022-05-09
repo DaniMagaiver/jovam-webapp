@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://localhost:8080/jovam",
+    "target": "http://localhost:9090/jovam-api",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,

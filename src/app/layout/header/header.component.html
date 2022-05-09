@@ -4,7 +4,7 @@
     </div>
     <menu>
         <ul>
-            <li (click)="go(menu)" [hidden]="!!menu.profile && activedProfile !== menu.profile" *ngFor="let menu of menuData">
+            <li (click)="go(menu)" [hidden]="!menu.profiles.includes(activedProfile)" *ngFor="let menu of menuData">
                 {{menu.title}}
             </li>
         </ul>
