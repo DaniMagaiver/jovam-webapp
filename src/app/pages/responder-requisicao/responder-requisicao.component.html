@@ -1,0 +1,64 @@
+<mat-grid-list class="container responder-requisicao" cols="4" rowHeight="fit">
+    <mat-grid-tile [colspan]="1">
+      <div class="sidebar">
+        <jovam-sidebar>
+            <ul class="informativo">
+              <li
+                (click)="selectedRequisicao = requisicao"
+                *ngFor="let requisicao of requisicoes"
+                class="informativo-item"
+              >
+                <span class="title">{{ requisicao.titulo }}</span>
+                <span class="subtitle">{{ requisicao.subtitulo }}</span>
+                <span class="name">{{ requisicao.secretaria.nome }}</span>
+                <mat-divider> </mat-divider>
+              </li>
+            </ul>
+          </jovam-sidebar>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+      <div class="body">
+        <div *ngIf="selectedRequisicao" class="ata-content">
+            <h1>{{ selectedRequisicao?.titulo }}</h1>
+            <h2>{{ selectedRequisicao?.subtitulo }}</h2>
+            <p>
+              {{ selectedRequisicao?.descricao }}
+            </p>
+          <mat-divider> </mat-divider>
+          <form
+            class="ata-form"
+            [formGroup]="atasFormGroup"
+          >
+            <h3>Escrever uma Ata de resposta</h3>
+            <mat-form-field>
+              <mat-label>Título</mat-label>
+              <input formControlName="titulo" id="txtTitle" matInput />
+              <mat-hint>Máximo de 50 caracteres</mat-hint>
+              <mat-error>Campo obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Assunto</mat-label>
+              <input formControlName="subtitulo" id="txtSubject" matInput />
+              <mat-error>Campo obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Texto da ATA</mat-label>
+              <textarea formControlName="descricao" id="txtText" matInput></textarea>
+              <mat-error>Campo obrigatório</mat-error>
+            </mat-form-field>
+            <button
+              [disabled]="atasFormGroup.invalid"
+              id="btnSend"
+              color="primary"
+              (click)="send()"
+              mat-raised-button
+            >
+              ENVIAR
+            </button>
+          </form>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  

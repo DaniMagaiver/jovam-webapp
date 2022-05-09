@@ -30,7 +30,10 @@ li {
 
 .body {
   height: 100%;
+  width: 100%;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -39,4 +42,31 @@ li {
 
 .mat-list-item-content{
   color: #fff;
+}
+
+.informativo {
+  .informativo-item {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    margin-top: 1.5rem;
+    cursor: pointer;
+
+    .title {
+      font-size: 18px;
+    }
+    .subtitle,
+    .name {
+      font-size: 14px;
+    }
+
+    .mat-divider {
+      margin-top: 1.5rem;
+      background-color: #fff;
+    }
+  }
+
+  .informativo-item:hover {
+    color: rgb(246, 166, 166);
+  }
 }

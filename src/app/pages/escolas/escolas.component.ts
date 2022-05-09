@@ -1,3 +1,5 @@
+import { Secretaria } from './../../shared/models/Secretaria.model';
+import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./escolas.component.scss'],
 })
 export class EscolasComponent {
-  schools = [{ name: 'Escola 1' }, { name: 'Escola 2' }, { name: 'Escola 3' }];
+  constructor(private activedRoute:ActivatedRoute){}
+
+  secretarias:Secretaria[] = this.activedRoute.snapshot.data.secretarias;
 }

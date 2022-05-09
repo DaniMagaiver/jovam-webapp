@@ -6,6 +6,9 @@
     padding-left: 2rem;
     background-color: black;
     color: #fff;
+    img{
+        margin-bottom: -1rem;
+    }
 
     menu{
         width: 100%;
@@ -17,5 +20,8 @@
                 cursor: pointer;
             }
         }
+    }
+    button{
+        margin-right: 1rem;
     }
 }

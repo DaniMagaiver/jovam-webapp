@@ -34,6 +34,13 @@ const routes: Routes = [
             (m) => m.RequisicoesModule
           ),
       },
+      {
+        path: 'requisicoes/resposta',
+        loadChildren: () =>
+          import(
+            './pages/responder-requisicao/responder-requisicao.module'
+          ).then((m) => m.ResponderRequisicaoModule),
+      },
     ],
   },
 ];

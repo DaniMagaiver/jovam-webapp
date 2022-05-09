@@ -1,7 +1,17 @@
-<p>São as escolas que recebem o auxílio deste conselho:</p>
-<mat-list>
-  <mat-list-item *ngFor="let school of schools">{{
-    school.name
-  }}</mat-list-item>
-</mat-list>
-<mat-divider> </mat-divider>
+<mat-grid-list class="container secretarias" cols="4" rowHeight="fit">
+  <mat-grid-tile [colspan]="1">
+    <div class="sidebar">
+      <jovam-sidebar> </jovam-sidebar>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="3">
+    <div class="body">
+      <h1>Secretarias</h1>
+      <h2>Escolas que recebem auxílio deste conselho:</h2>
+      <ul>
+        <li class="secretaria-name" *ngFor="let secretaria of secretarias">{{ secretaria.nome }}</li>
+      </ul>
+      <mat-divider> </mat-divider>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -31,4 +31,10 @@ export class StorageService{
     getInServiceStorage(key:string){
         return this.serviceStorage[key];
     }
+
+    cleanStorage(){
+        window.localStorage.clear();
+        window.sessionStorage.clear();
+        this.serviceStorage = {};
+    }
 }

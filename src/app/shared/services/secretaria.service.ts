@@ -15,5 +15,7 @@ export class SecretariaService{
         return this.httpClient.post(`${this.baseUrl}/${id}`, secretaria);
     }
 
-
+    listarSecretarias(id:string){
+        return this.httpClient.get<Secretaria[]>(`${this.baseUrl}/${id}`);
+    }
 }

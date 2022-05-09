@@ -17,23 +17,32 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private activedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private storageService:StorageService,
-    private loginService:LoginService
+    private storageService: StorageService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       id: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      profile: [null, [Validators.required]]
+      profile: [null, [Validators.required]],
     });
   }
 
   login() {
+    const profile = this.loginForm.get('profile')?.value;
     this.loginService.login(this.loginForm.value).subscribe((user) => {
-      this.storageService.saveInSessionStorage('profile', this.loginForm.get('profile')?.value);
-      this.storageService.saveInSessionStorage('user', JSON.stringify(user))
-      this.router.navigate(['./home/requisicoes'], { relativeTo: this.activedRoute });
+      this.storageService.saveInSessionStorage('profile', profile);
+      this.storageService.saveInSessionStorage('user', JSON.stringify(user));
+      if (profile === 'secretaria') {
+        this.router.navigate(['./home/requisicoes'], {
+          relativeTo: this.activedRoute,
+        });
+      } else {
+        this.router.navigate(['./home/requisicoes/resposta'], {
+          relativeTo: this.activedRoute,
+        });
+      }
     });
   }
 }

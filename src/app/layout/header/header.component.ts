@@ -21,14 +21,14 @@ export class HeaderComponent implements OnInit {
 
   menuData: Menu[] = [
     {
-      title: 'Início',
-      route: './requisicoes',
-      profiles: ['conselho'],
-    },
-    {
-      title: 'Início',
+      title: 'Requisições',
       route: './requisicoes',
       profiles: ['secretaria'],
+    },
+    {
+      title: 'Requisições',
+      route: './requisicoes/resposta',
+      profiles: ['conselho'],
     },
     {
       title: 'Atas',
@@ -47,15 +47,20 @@ export class HeaderComponent implements OnInit {
     },
   ];
 
-  activedProfile:string = this.storageService.getInSessionStorage('profile');
+  activedProfile: string = this.storageService.getInSessionStorage('profile');
 
   ngOnInit(): void {
-    if(!this.activedProfile){
+    if (!this.activedProfile) {
       this.router.navigate([''], { relativeTo: this.activedRoute });
     }
   }
 
   go(menu: Menu) {
     this.router.navigate([menu.route], { relativeTo: this.activedRoute });
+  }
+
+  exit(){
+    this.storageService.cleanStorage();
+    this.router.navigate([''], { relativeTo: this.activedRoute });
   }
 }
